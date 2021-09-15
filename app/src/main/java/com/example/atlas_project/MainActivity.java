@@ -14,6 +14,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -59,71 +60,64 @@ public class MainActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RequestBody formBody2 = new FormBody.Builder()
-                        .add("Email", editTextTextEmail.getText().toString())
-                        .add("Password", editTextTextPass.getText().toString())
-                        .build();
-                Log.i("formBody2", formBody2.toString());
-                Request request = new Request.Builder().url("http://10.0.2.2:5000/login").post(formBody2).build();
-                client.newCall(request).enqueue(new Callback() {
+                if(!Patterns.EMAIL_ADDRESS.matcher(editTextTextEmail.getText().toString()).matches()){
+                    editTextTextEmail.setError("Enter valid Email ID");
+                }
+                else if(editTextTextPass.length()==0){
+                    Toast.makeText(MainActivity.this, "Enter password", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    RequestBody formBody2 = new FormBody.Builder()
+                            .add("Email", editTextTextEmail.getText().toString())
+                            .add("Password", editTextTextPass.getText().toString())
+                            .build();
+                    Log.i("formBody2", formBody2.toString());
+                    Request request = new Request.Builder().url("http://10.0.2.2:5000/login").post(formBody2).build();
+                    client.newCall(request).enqueue(new Callback() {
 
-                    @Override
-                    public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                        Log.e("onfailure", e.toString());
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                Toast.makeText(MainActivity.this, "", Toast.LENGTH_SHORT).show();
-                                editTextTextEmail.setText("");
-                                editTextTextPass.setText("");
+                        @Override
+                        public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                            Log.e("onfailure", e.toString());
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(MainActivity.this, "", Toast.LENGTH_SHORT).show();
+                                    editTextTextEmail.setText("");
+                                    editTextTextPass.setText("");
+                                }
+                            });
+                        }
 
+                        @Override
+                        public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                            Log.i("hello guys", response.toString());
+                            if (response.body().string().equals("User exist")) {
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Toast.makeText(MainActivity.this, "you are entered", Toast.LENGTH_SHORT).show();
+                                        IntentIntegrator intentIntegrator = new IntentIntegrator(MainActivity.this);
+                                        intentIntegrator.setPrompt("Scan a barcode or QR Code");
+                                        intentIntegrator.setBeepEnabled(true);
+                                        intentIntegrator.setOrientationLocked(true);
+                                        intentIntegrator.setCaptureActivity(Capture.class);
+                                        intentIntegrator.initiateScan();
+                                    }
+                                });
+                            } else {
+                                //Log.i("errrrrrorr", "Your account is not valid");
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Toast.makeText(MainActivity.this, "Your credentials are invalid", Toast.LENGTH_SHORT).show();
 
+                                    }
+                                });
                             }
-                        });
 
-
-
-
-                    }
-
-                    @Override
-
-                    public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                        Log.i("hello guys", response.toString());
-                        if (response.body().string().equals("User exist")){
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    Toast.makeText(MainActivity.this , "you are entered", Toast.LENGTH_SHORT).show();
-                                    IntentIntegrator intentIntegrator = new IntentIntegrator(MainActivity.this);
-                                    intentIntegrator.setPrompt("Scan a barcode or QR Code");
-                                    intentIntegrator.setBeepEnabled(true);
-                                    intentIntegrator.setOrientationLocked(true);
-                                    intentIntegrator.setCaptureActivity(Capture.class);
-                                    intentIntegrator.initiateScan();
-                                }
-                            });
                         }
-                        else {
-                            //Log.i("errrrrrorr", "Your account is not valid");
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    Toast.makeText(MainActivity.this , "Your credentials are invalid", Toast.LENGTH_SHORT).show();
-
-                                }
-                            });
-                        }
-
-                    }
-                });
-
-
-
-
-
-
-
+                    });
+                }
             }
         });
 

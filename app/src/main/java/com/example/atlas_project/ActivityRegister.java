@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -54,52 +55,73 @@ public class ActivityRegister extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                RequestBody formBody = new FormBody.Builder()
-                        .add("Name", editTextTextPersonNameTextView.getText().toString())
-                        .add("Surname", editTextTextPersonName2TextView.getText().toString())
-                        .add("Email",editTextTextEmailAddress2TextView.getText().toString())
-                        .add("Password", editTextTextPassword2TextView.getText().toString())
-                        .add("ConfirmPassword", ConfirmPasswordView.getText().toString())
-                        .build();
-                Log.i("formBody", formBody.toString());
-                Request request = new Request.Builder().url("http://10.0.2.2:5000/register").post(formBody).build();
-                client.newCall(request).enqueue(new Callback() {
-                    @Override
-                    public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                        Log.e("onfailure", e.toString());
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                Toast.makeText(ActivityRegister.this, "", Toast.LENGTH_SHORT).show();
-                                editTextTextPersonNameTextView.setText("");
-                                editTextTextPersonName2TextView.setText("");
-                                editTextTextEmailAddress2TextView.setText("");
-                                editTextTextPassword2TextView.setText("");
-                                ConfirmPasswordView.setText("");
-
-                            }
-                        });
-
-
-
-
-                    }
-
-                    @Override
-                    public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                        if (response.body().string().equals("great success")){
+                if(editTextTextPersonNameTextView.length()==0){
+                    Toast.makeText(ActivityRegister.this, "Enter first name", Toast.LENGTH_SHORT).show();
+                }
+                else if(!editTextTextPersonNameTextView.getText().toString().matches("[a-z,A-Z, ]*")){
+                    editTextTextPersonNameTextView.setError("Enter character only");
+                }
+                else if(editTextTextPersonName2TextView.length()==0){
+                    Toast.makeText(ActivityRegister.this, "Enter last name", Toast.LENGTH_SHORT).show();
+                }
+                else if(!editTextTextPersonName2TextView.getText().toString().matches("[a-z,A-Z, ]*")){
+                    editTextTextPersonName2TextView.setError("Enter character only");
+                }
+                else if(!Patterns.EMAIL_ADDRESS.matcher(editTextTextEmailAddress2TextView.getText().toString()).matches()){
+                    editTextTextEmailAddress2TextView.setError("Enter valid Email ID");
+                }
+                else if(editTextTextPassword2TextView.length()==0){
+                    Toast.makeText(ActivityRegister.this, "Enter password", Toast.LENGTH_SHORT).show();
+                }
+                else if(ConfirmPasswordView.length()==0){
+                    Toast.makeText(ActivityRegister.this, "Enter password to confirm", Toast.LENGTH_SHORT).show();
+                }
+                else if(!ConfirmPasswordView.getText().toString().equals(ConfirmPasswordView.getText().toString())) {
+                    ConfirmPasswordView.setError("Password does not match reenter the password");
+                }
+                else {
+                    RequestBody formBody = new FormBody.Builder()
+                            .add("Name", editTextTextPersonNameTextView.getText().toString())
+                            .add("Surname", editTextTextPersonName2TextView.getText().toString())
+                            .add("Email", editTextTextEmailAddress2TextView.getText().toString())
+                            .add("Password", editTextTextPassword2TextView.getText().toString())
+                            .add("ConfirmPassword", ConfirmPasswordView.getText().toString())
+                            .build();
+                    Log.i("formBody", formBody.toString());
+                    Request request = new Request.Builder().url("http://10.0.2.2:5000/register").post(formBody).build();
+                    client.newCall(request).enqueue(new Callback() {
+                        @Override
+                        public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                            Log.e("onfailure", e.toString());
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Toast.makeText(ActivityRegister.this , "data received", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(ActivityRegister.this, "", Toast.LENGTH_SHORT).show();
+                                    editTextTextPersonNameTextView.setText("");
+                                    editTextTextPersonName2TextView.setText("");
+                                    editTextTextEmailAddress2TextView.setText("");
+                                    editTextTextPassword2TextView.setText("");
+                                    ConfirmPasswordView.setText("");
+
                                 }
                             });
                         }
 
-                    }
-                });
-                Intent in=new Intent(ActivityRegister.this,MainActivity.class);
-                startActivity(in);
+                        @Override
+                        public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                            if (response.body().string().equals("great success")) {
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Toast.makeText(ActivityRegister.this, "data received", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                            }
+                        }
+                    });
+                    Intent in = new Intent(ActivityRegister.this, MainActivity.class);
+                    startActivity(in);
+                }
             }
         });
     }
