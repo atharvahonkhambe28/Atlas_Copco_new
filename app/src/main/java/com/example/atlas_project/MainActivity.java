@@ -13,10 +13,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +41,9 @@ public class MainActivity extends AppCompatActivity {
     private TextView editTextTextEmail;
     private TextView editTextTextPass;
     private OkHttpClient okHttpClient;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +52,13 @@ public class MainActivity extends AppCompatActivity {
         login=(Button)findViewById(R.id.login);
         editTextTextEmail=findViewById(R.id.Email);
         editTextTextPass=findViewById(R.id.Pass);
+
+
+
+
+
+
+
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override

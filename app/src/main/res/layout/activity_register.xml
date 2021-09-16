@@ -25,55 +25,81 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/fname"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/pass"
-            android:paddingBottom="15dp"
-            android:hint="Enter First Name">
+            android:layout_margin="10dp"
+            android:hint="Enter First Name"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:boxStrokeColor="#3BBDFA"
+            app:boxStrokeWidth="2dp"
+            app:boxCornerRadiusBottomEnd="2dp"
+            app:boxCornerRadiusTopEnd="2dp"
+            app:boxCornerRadiusTopStart="2dp"
+            app:boxCornerRadiusBottomStart="2dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextTextPersonName"
 
+                app:boxStrokeColor="#3BBDFA"
+                app:boxStrokeWidth="2dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@layout/rounded_border_edittext"
-                android:inputType="textEmailAddress" />
+                android:inputType="text"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/lname"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/pass"
-            android:paddingBottom="15dp"
+            android:layout_margin="10dp"
+
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:boxStrokeColor="#3BBDFA"
+            app:boxStrokeWidth="2dp"
+            app:boxCornerRadiusBottomEnd="2dp"
+            app:boxCornerRadiusTopEnd="2dp"
+            app:boxCornerRadiusTopStart="2dp"
+            app:boxCornerRadiusBottomStart="2dp"
             android:hint="Enter Last Name">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextTextPersonName2"
 
+                app:boxStrokeColor="#3BBDFA"
+                app:boxStrokeWidth="2dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@layout/rounded_border_edittext" />
+                android:inputType="text" />
 
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/email"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/pass"
-            android:paddingBottom="15dp"
-            android:hint="Enter Email">
+            android:layout_margin="10dp"
+            android:hint="Enter Email"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:boxStrokeColor="#3BBDFA"
+            app:boxStrokeWidth="2dp"
+            app:boxCornerRadiusBottomEnd="2dp"
+            app:boxCornerRadiusTopEnd="2dp"
+            app:boxCornerRadiusTopStart="2dp"
+            app:boxCornerRadiusBottomStart="2dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextTextEmailAddress2"
 
+                app:boxStrokeColor="#3BBDFA"
+                app:boxStrokeWidth="2dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@layout/rounded_border_edittext"
                 android:inputType="textEmailAddress" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -82,50 +108,69 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/pass"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="15dp"
-            android:hint="Enter password"
-            app:endIconMode="password_toggle">
+            android:layout_margin="10dp"
+            android:hint="Enter Password"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:boxStrokeColor="#3BBDFA"
+            app:boxStrokeWidth="2dp"
+            app:boxCornerRadiusBottomEnd="2dp"
+            app:boxCornerRadiusTopEnd="2dp"
+            app:boxCornerRadiusTopStart="2dp"
+            app:boxCornerRadiusBottomStart="2dp"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextTextPassword2"
 
+                app:boxStrokeColor="#3BBDFA"
+                app:boxStrokeWidth="2dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@layout/rounded_border_edittext"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/con_pass"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="15dp"
-            android:hint="Confirm Password"
-            app:endIconMode="password_toggle">
+            android:layout_margin="10dp"
+            android:hint="Enter Password"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:boxStrokeColor="#3BBDFA"
+            app:boxStrokeWidth="2dp"
+            app:boxCornerRadiusBottomEnd="2dp"
+            app:boxCornerRadiusTopEnd="2dp"
+            app:boxCornerRadiusTopStart="2dp"
+            app:boxCornerRadiusBottomStart="2dp"
+            android:paddingBottom="15dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/ConfirmPassword"
 
+                app:boxStrokeColor="#3BBDFA"
+                app:boxStrokeWidth="2dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@layout/rounded_border_edittext"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"/>
 
         </com.google.android.material.textfield.TextInputLayout>
+
         <Button
             android:id="@+id/register"
+            android:layout_width="354dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/custom_button"
             android:text="Register"
             android:textColor="#FFFFFF"
             android:textSize="20dp"
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/custom_button"
 
             />
 
