@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Start"
+    >
+
+    <RelativeLayout
+        android:id="@+id/holder1"
+        android:layout_width="500dp"
+        android:padding="7dp"
+        android:layout_height="500dp"
+        android:outlineProvider="bounds">
+
+        <!--                <com.example.canvas1.customViews.zoom-->
+        <!--                    android:layout_width="match_parent"-->
+        <!--                    android:layout_height="match_parent"/>-->
+
+        <com.example.atlas_project.customViews.DrawLayoutBitmap
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/imagetype1_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="530dp"
+        android:src="@drawable/type1_1"
+        android:visibility="invisible"/>
+    <ImageView
+        android:id="@+id/imagetype1_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="530dp"
+        android:src="@drawable/type1_2"
+        android:visibility="invisible"/>
+    <ImageView
+        android:id="@+id/imagetype1_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="530dp"
+        android:src="@drawable/type1_3"
+        android:visibility="invisible"/>
+
+    <Button
+        android:id="@+id/next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="250dp"
+        android:layout_marginTop="550dp"
+        android:text="next" />
+</RelativeLayout>

@@ -88,7 +88,8 @@ public class ActivityRegister extends AppCompatActivity {
                             .add("ConfirmPassword", ConfirmPasswordView.getText().toString())
                             .build();
                     Log.i("formBody", formBody.toString());
-                    Request request = new Request.Builder().url("http://10.0.2.2:5000/register").post(formBody).build();
+                    String string = getString(R.string.url);
+                    Request request = new Request.Builder().url(string+"/register").post(formBody).build();
                     client.newCall(request).enqueue(new Callback() {
                         @Override
                         public void onFailure(@NonNull Call call, @NonNull IOException e) {

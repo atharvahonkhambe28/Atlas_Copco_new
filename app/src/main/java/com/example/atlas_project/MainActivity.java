@@ -72,7 +72,9 @@ public class MainActivity extends AppCompatActivity {
                             .add("Password", editTextTextPass.getText().toString())
                             .build();
                     Log.i("formBody2", formBody2.toString());
-                    Request request = new Request.Builder().url("http://10.0.2.2:5000/login").post(formBody2).build();
+                    String string = getString(R.string.url);
+                    Log.d("---------" , string) ;
+                    Request request = new Request.Builder().url(string+"/login").post(formBody2).build();
                     client.newCall(request).enqueue(new Callback() {
 
                         @Override
@@ -95,13 +97,9 @@ public class MainActivity extends AppCompatActivity {
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
-                                        Toast.makeText(MainActivity.this, "you are entered", Toast.LENGTH_SHORT).show();
-                                        IntentIntegrator intentIntegrator = new IntentIntegrator(MainActivity.this);
-                                        intentIntegrator.setPrompt("Scan a barcode or QR Code");
-                                        intentIntegrator.setBeepEnabled(true);
-                                        intentIntegrator.setOrientationLocked(true);
-                                        intentIntegrator.setCaptureActivity(Capture.class);
-                                        intentIntegrator.initiateScan();
+                                        Intent n = new Intent(MainActivity.this , Scan.class) ;
+                                        startActivity(n);
+
                                     }
                                 });
                             } else {
@@ -123,22 +121,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
-    {
-        super.onActivityResult(requestCode, resultCode, data);
-        IntentResult intentResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        // if the intentResult is null then
-        // toast a message as "cancelled"
 
-            if (intentResult.getContents() != null) {
-
-                Intent intent=new Intent(MainActivity.this, item_list.class);
-                startActivity(intent);
-
-            }else {
-                Toast.makeText(this, "Scan Again", Toast.LENGTH_SHORT).show();
-            }
-    }
 
 }
