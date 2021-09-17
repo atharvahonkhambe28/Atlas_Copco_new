@@ -37,11 +37,14 @@
             app:boxCornerRadiusBottomEnd="2dp"
             app:boxCornerRadiusTopEnd="2dp"
             app:boxCornerRadiusTopStart="2dp"
-            app:boxCornerRadiusBottomStart="2dp">
+            app:boxCornerRadiusBottomStart="2dp"
+            app:hintTextColor="@color/blue"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextTextPersonName"
-
+                android:textCursorDrawable="@null"
+                android:textColor="@color/blue"
                 app:boxStrokeColor="#3BBDFA"
                 app:boxStrokeWidth="2dp"
                 android:layout_width="match_parent"
@@ -65,11 +68,14 @@
             app:boxCornerRadiusTopEnd="2dp"
             app:boxCornerRadiusTopStart="2dp"
             app:boxCornerRadiusBottomStart="2dp"
-            android:hint="Enter Last Name">
+            android:hint="Enter Last Name"
+            app:hintTextColor="@color/blue"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextTextPersonName2"
-
+                android:textCursorDrawable="@null"
+                android:textColor="@color/blue"
                 app:boxStrokeColor="#3BBDFA"
                 app:boxStrokeWidth="2dp"
                 android:layout_width="match_parent"
@@ -91,11 +97,14 @@
             app:boxCornerRadiusBottomEnd="2dp"
             app:boxCornerRadiusTopEnd="2dp"
             app:boxCornerRadiusTopStart="2dp"
-            app:boxCornerRadiusBottomStart="2dp">
+            app:boxCornerRadiusBottomStart="2dp"
+            app:hintTextColor="@color/blue"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextTextEmailAddress2"
-
+                android:textCursorDrawable="@null"
+                android:textColor="@color/blue"
                 app:boxStrokeColor="#3BBDFA"
                 app:boxStrokeWidth="2dp"
                 android:layout_width="match_parent"
@@ -121,11 +130,13 @@
             app:boxCornerRadiusTopEnd="2dp"
             app:boxCornerRadiusTopStart="2dp"
             app:boxCornerRadiusBottomStart="2dp"
+            app:hintTextColor="@color/blue"
             >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextTextPassword2"
-
+                android:textCursorDrawable="@null"
+                android:textColor="@color/blue"
                 app:boxStrokeColor="#3BBDFA"
                 app:boxStrokeWidth="2dp"
                 android:layout_width="match_parent"
@@ -149,11 +160,13 @@
             app:boxCornerRadiusTopEnd="2dp"
             app:boxCornerRadiusTopStart="2dp"
             app:boxCornerRadiusBottomStart="2dp"
-            android:paddingBottom="15dp">
+            android:paddingBottom="15dp"
+            app:hintTextColor="@color/blue">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/ConfirmPassword"
-
+                android:textCursorDrawable="@null"
+                android:textColor="@color/blue"
                 app:boxStrokeColor="#3BBDFA"
                 app:boxStrokeWidth="2dp"
                 android:layout_width="match_parent"
@@ -167,13 +180,13 @@
             android:layout_width="354dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:background="@drawable/custom_button"
+            android:width="270dp"
+            android:height="60dp"
+            android:backgroundTint="@color/blue"
             android:text="Register"
             android:textColor="#FFFFFF"
             android:textSize="20dp"
-
             />
-
         <TextView
             android:id="@+id/textview"
             android:layout_width="match_parent"
@@ -182,10 +195,8 @@
             android:gravity="center"
             android:text="Already have account? LogIn"
             android:textAlignment="center"
-            android:textColor="#3bbdfa"
+            android:textColor="@color/blue"
             android:textSize="20dp" />
-
-
     </LinearLayout>
 
 </RelativeLayout>

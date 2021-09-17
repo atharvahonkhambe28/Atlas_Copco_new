@@ -55,12 +55,12 @@ public class Scan extends AppCompatActivity {
         // toast a message as "cancelled"
 
         if (intentResult.getContents() != null) {
-            ProgressDialog dialog = ProgressDialog.show(Scan.this, "",
+            /*ProgressDialog dialog = ProgressDialog.show(Scan.this, "",
                     "Loading. Please wait...", true);
-            FetchItemList.getInstance().fetch_item_list(dialog , Scan.this ,intentResult.getContents());
+            FetchItemList.getInstance().fetch_item_list(dialog , Scan.this ,intentResult.getContents());*/
 
-//            Intent intent=new Intent(Scan.this, item_list.class);
-//            startActivity(intent);
+            Intent intent=new Intent(Scan.this, CardListActivity.class);
+            startActivity(intent);
 
         }else {
             Toast.makeText(this, "Scan Again", Toast.LENGTH_SHORT).show();

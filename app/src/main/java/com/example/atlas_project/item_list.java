@@ -29,9 +29,9 @@ public class item_list extends AppCompatActivity {
         for(Item i: itemList.getItems()){
             items.add( i.getItemNo() + "---" +i.getLocation() ) ;
         }
-        picklistno = (TextView) findViewById(R.id.picklistno) ;
+        picklistno = (TextView) findViewById(R.id.picklistno) ;//picklistno
         kittername = (TextView) findViewById(R.id.kittername) ;
-        total_items= (TextView) findViewById(R.id.totalitems) ;
+        total_items= (TextView) findViewById(R.id.totalitems) ;//totalitems
 
 
         picklistno.setText(itemList.getPicklistnumber());

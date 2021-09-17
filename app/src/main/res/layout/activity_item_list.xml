@@ -54,8 +54,8 @@
                     android:text="Remaining Items:05" />
 
             </LinearLayout>
-
         </LinearLayout>
+
 
         <LinearLayout
 
@@ -63,11 +63,17 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <ListView
+            <!--ListView
                 android:id="@+id/item_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"></ListView>
-        </LinearLayout>
-    </LinearLayout>
+        </LinearLayout-->
+            <ListView
+                           android:id="@+id/item_list"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content">
 
+            </ListView>
+    </LinearLayout>
+    </LinearLayout>
 </RelativeLayout>
