@@ -73,14 +73,16 @@ public class FetchItemList {
                 setItemList(response.body().get(0));
                 ArrayList<String> locations = new ArrayList<>();
                 location.setCurrent_point(0);
-                location.setDestination("53 AA1");
+
+                location.setDestination( response.body().get(0).getItems().get(0).getLocation());
                 location.setSource("53 AA");
 
                 //loading
-                for(Item i : response.body().get(0).getItems()){
-                    locations.add(i.getLocation()) ;
+                for(int i=1  ; i<response.body().get(0).getItems().size() ;i++ ){
+                    locations.add(response.body().get(0).getItems().get(i).getLocation()) ;
                 }
                 location.setLocations(locations);
+
                 Location.done = true ;
             }
 

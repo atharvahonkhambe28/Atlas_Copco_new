@@ -77,7 +77,7 @@ public class CardListActivity extends Activity {
         if(message.equals("back")) return ;
         Location location = Location.getInstance(null ,null) ;
        // Log.d("dejkdasjf" , "done picking all locations");
-        if(location.getCurrent_point() < location.getLocations().size()){
+        if(location.getCurrent_point() <= location.getLocations().size()){
             Intent intent=new Intent(CardListActivity.this, Start.class);
             startActivityForResult(intent ,2);
         }
@@ -85,7 +85,7 @@ public class CardListActivity extends Activity {
 
             Log.d("dejkdasjf" , "done picking all locations");
             FetchItemList.getInstance(null).post_item_list();
-//        finish();
+            finish();
         }
     }
 }

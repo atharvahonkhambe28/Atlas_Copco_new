@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -20,13 +21,15 @@ public class item_details extends AppCompatActivity {
     Button scan;
     String result;
     TextView tv_quantity , tv_desc , tv_number , tv_location ;
+    Item item ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_details);
-        String point = getIntent().getStringExtra("current_point") ;
+        int point = getIntent().getIntExtra("current_point" , 0) ;
+      //  Log.d("int -------" , String.valueOf(point)) ;
         scan=(Button)findViewById(R.id.scan);
-        Item item = FetchItemList.getInstance(null).getItemList().getItems().get(Integer.parseInt(point));
+        item = FetchItemList.getInstance(null).getItemList().getItems().get(point);
         tv_quantity = findViewById(R.id.qty) ;
         tv_desc = findViewById(R.id.item_des) ;
         tv_number = findViewById(R.id.item_no) ;
@@ -47,7 +50,10 @@ public class item_details extends AppCompatActivity {
                 intentIntegrator.setOrientationLocked(true);
                 intentIntegrator.setCaptureActivity(Capture.class);
                 intentIntegrator.initiateScan();
-
+//                Intent intent = new Intent() ;
+//                intent.putExtra("isValid" , true) ;
+//                setResult(3 , intent);
+//                finish();
             }
         });
     }
@@ -65,7 +71,12 @@ public class item_details extends AppCompatActivity {
 
             result=intentResult.getContents();
 
-            Toast.makeText(this,result, Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent() ;
+            intent.putExtra("isValid" , item.getItemNo().equals(result)) ;
+            setResult(3 , intent);
+            finish();
+
+           // Toast.makeText(this,result, Toast.LENGTH_SHORT).show();
 
         }else {
             Toast.makeText(this, "Scan Again", Toast.LENGTH_SHORT).show();

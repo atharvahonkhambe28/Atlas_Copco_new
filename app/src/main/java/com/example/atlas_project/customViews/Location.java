@@ -17,7 +17,9 @@ public class Location {
     private ArrayList<String> locations ;
 
     public int getCurrent_point() {
-        return current_point;
+
+            return current_point;
+
     }
 
     public void setCurrent_point(int current_point) {
@@ -95,11 +97,12 @@ public class Location {
 
     public void setPoints(){
         if(current_point < locations.size()) {
+
             source = destination.substring(0, 5); //53 AA
             destination = locations.get(current_point);
-            current_point++;
-        }
 
+        }
+        current_point++;
         Log.d("------" , source + "   " + destination) ;
     }
     public ArrayList<String> getLocations() {
