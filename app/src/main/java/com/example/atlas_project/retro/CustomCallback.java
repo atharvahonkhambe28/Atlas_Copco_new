@@ -4,13 +4,9 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 
-import com.example.atlas_project.Start;
-import com.example.atlas_project.customViews.Location;
-import com.example.atlas_project.item_list;
-import com.example.atlas_project.jobdata.ItemList;
+import com.example.atlas_project.CardListActivity;
+import com.example.atlas_project.Scan;
 
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -30,12 +26,12 @@ public class CustomCallback<T> implements Callback<T> {
 
     @Override
     public void onResponse(Call<T> call, Response<T> response) {
+        if(response.body() == null) return;
         mCallback.onResponse(call , response);
         this.dialog.dismiss();
-
-        if(response.body() == null) return;
-        Intent n =new Intent(mContext , item_list.class) ;
+        Intent n =new Intent(mContext, CardListActivity.class) ;
         mContext.startActivity(n);
+
     }
     @Override
     public void onFailure(Call<T> call, Throwable t) {

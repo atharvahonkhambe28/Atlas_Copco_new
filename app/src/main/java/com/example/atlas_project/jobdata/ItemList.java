@@ -21,6 +21,10 @@ public class ItemList {
     private List<Item> items;
     @SerializedName("Kitter")
     private String Kitter;
+
+
+
+
     public ItemList(String kitnumber ,String picklistnumber ,String uniquenumber , String station , List<Item> items ,String Kitter ){
         this.kitnumber = kitnumber ;
         this.picklistnumber  = picklistnumber;
@@ -28,6 +32,7 @@ public class ItemList {
         this.station = station;
         this.Kitter = Kitter ;
         this.items = items ;
+
     }
 
     public String getKitnumber() {

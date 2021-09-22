@@ -99,6 +99,7 @@ public class Location {
             destination = locations.get(current_point);
             current_point++;
         }
+
         Log.d("------" , source + "   " + destination) ;
     }
     public ArrayList<String> getLocations() {

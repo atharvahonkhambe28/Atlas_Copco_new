@@ -72,6 +72,8 @@ public class MainActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent n = new Intent(MainActivity.this , Scan.class) ;
+                startActivity(n);
                 if(!Patterns.EMAIL_ADDRESS.matcher(editTextTextEmail.getText().toString()).matches()){
                     editTextTextEmail.setError("Enter valid Email ID");
                 }
@@ -109,8 +111,8 @@ public class MainActivity extends AppCompatActivity {
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
-                                        Intent n = new Intent(MainActivity.this , Scan.class) ;
-                                        startActivity(n);
+//                                        Intent n = new Intent(MainActivity.this , Scan.class) ;
+//                                        startActivity(n);
 
                                     }
                                 });

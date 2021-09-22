@@ -11,13 +11,25 @@ public class Item {
     private String Location;
     @SerializedName("quantity")
     private String Quantity;
-    public Item(String ItemNo, String ItemDescription, String Location , String Quantity){
+    @SerializedName("quantity_picked")
+    private String quantity_picked;
+
+    public Item(String ItemNo, String ItemDescription, String Location , String Quantity,String quantity_picked){
         this.ItemNo = ItemNo;
         this.ItemDescription = ItemDescription;
         this.Location = Location ;
         this.Quantity = Quantity ;
+        this.quantity_picked = quantity_picked ;
     }
 
+
+    public String getQuantity_picked() {
+        return quantity_picked;
+    }
+
+    public void setQuantity_picked(String quantity_picked) {
+        this.quantity_picked = quantity_picked;
+    }
     public String getItemNo() {
         return ItemNo;
     }

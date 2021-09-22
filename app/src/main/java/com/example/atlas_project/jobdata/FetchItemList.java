@@ -4,6 +4,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.util.Log;
 
+import androidx.annotation.Nullable;
+
 import com.example.atlas_project.R;
 import com.example.atlas_project.customViews.Location;
 import com.example.atlas_project.retro.CustomCallback;
@@ -21,21 +23,44 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class FetchItemList {
     private static ItemList itemList ;
     private static FetchItemList fetchItemList = null ;
-    private FetchItemList(){
-
+    private static Retrofit retrofit ;
+    private static Jobapi jobapi;
+    private FetchItemList(String url){
+             retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        jobapi =retrofit.create(Jobapi.class);
     }
-    public static FetchItemList getInstance(){
+    public static FetchItemList getInstance(@Nullable String url){
         if(fetchItemList == null)
-            fetchItemList = new FetchItemList();
+            fetchItemList = new FetchItemList(url);
         return fetchItemList ;
+    }
+    public void post_item_list(){
+        List<ItemList> itemLists = new ArrayList<>() ;
+        itemLists.add(itemList) ;
+        Call<String> call = jobapi.setItems(itemLists);
+
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                String answer = response.body() ;
+                if(answer.equals("done")) {
+                    Log.d("print-------", answer);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Log.d("print fail-------" , t.getMessage() ) ;
+            }
+        });
     }
     public void fetch_item_list(ProgressDialog dialog , Context context , String filename){
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(context.getString(R.string.url))
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        Jobapi jobapi =retrofit.create(Jobapi.class);
+
+
         Call<List<ItemList>> call = jobapi.getJob(filename);
         Location location =  Location.getInstance(null ,null) ;
 
@@ -57,7 +82,6 @@ public class FetchItemList {
                 }
                 location.setLocations(locations);
                 Location.done = true ;
-
             }
 
             @Override

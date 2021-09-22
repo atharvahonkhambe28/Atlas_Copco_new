@@ -30,7 +30,6 @@
         <activity android:name=".Scan" />
         <activity android:name=".Start" />
         <activity android:name=".item_details" />
-        <activity android:name=".item_list" />
 
         <uses-library
             android:name="org.apache.http.legacy"

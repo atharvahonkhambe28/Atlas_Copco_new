@@ -29,19 +29,23 @@ public class Scan extends AppCompatActivity {
         InitializeGraph.getInstance(5 ,11) ;
         setContentView(R.layout.activity_scan);
         start =( Button) findViewById(R.id.start) ;
-        FetchItemList.getInstance() ;
+        FetchItemList.getInstance(getString(R.string.url)) ;
         Toast.makeText(Scan.this, "you are entered", Toast.LENGTH_SHORT).show();
 
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ProgressDialog dialog = ProgressDialog.show(Scan.this, "",
+                        "Loading. Please wait...", true);
+                FetchItemList.getInstance(null).fetch_item_list(dialog , Scan.this ,"01S03S1001270222021123032");
 
-                IntentIntegrator intentIntegrator = new IntentIntegrator(Scan.this);
-                intentIntegrator.setPrompt("Scan a barcode or QR Code");
-                intentIntegrator.setBeepEnabled(true);
-                intentIntegrator.setOrientationLocked(true);
-                intentIntegrator.setCaptureActivity(Capture.class);
-                intentIntegrator.initiateScan();
+
+//                IntentIntegrator intentIntegrator = new IntentIntegrator(Scan.this);
+//                intentIntegrator.setPrompt("Scan a barcode or QR Code");
+//                intentIntegrator.setBeepEnabled(true);
+//                intentIntegrator.setOrientationLocked(true);
+//                intentIntegrator.setCaptureActivity(Capture.class);
+//                intentIntegrator.initiateScan();
             }
         });
 
@@ -55,12 +59,6 @@ public class Scan extends AppCompatActivity {
         // toast a message as "cancelled"
 
         if (intentResult.getContents() != null) {
-            /*ProgressDialog dialog = ProgressDialog.show(Scan.this, "",
-                    "Loading. Please wait...", true);
-            FetchItemList.getInstance().fetch_item_list(dialog , Scan.this ,intentResult.getContents());*/
-
-            Intent intent=new Intent(Scan.this, CardListActivity.class);
-            startActivity(intent);
 
         }else {
             Toast.makeText(this, "Scan Again", Toast.LENGTH_SHORT).show();

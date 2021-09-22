@@ -2,22 +2,25 @@ package com.example.atlas_project;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.atlas_project.customViews.DrawLayoutBitmap;
 import com.example.atlas_project.customViews.Location;
+import com.example.atlas_project.jobdata.FetchItemList;
 
 import java.util.HashMap;
 
-public class Start extends AppCompatActivity {
+public class Start extends Activity {
 
     private Button next;
-
+    private TextView quatityTextview , itemnumberTextview;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,8 +30,15 @@ public class Start extends AppCompatActivity {
         Location location = Location.getInstance(null , null) ;
         ImageView imageView = (ImageView) findViewById(images.get(location.getType() + "_" + location.getShelf()));
         imageView.setVisibility(View.VISIBLE);
-
-
+        quatityTextview = findViewById(R.id.start_quantity);
+        itemnumberTextview = findViewById(R.id.start_itemNumber);
+        try {
+            quatityTextview.setText("Quantity : " + FetchItemList.getInstance(null).getItemList().getItems().get(location.getCurrent_point()).getQuantity());
+            itemnumberTextview.setText("ItemNumber : " + FetchItemList.getInstance(null).getItemList().getItems().get(location.getCurrent_point()).getItemNo());
+        }
+        catch (IndexOutOfBoundsException e){
+            Log.d("efef" , e.getMessage()) ;
+        }
 
 
 
@@ -40,13 +50,36 @@ public class Start extends AppCompatActivity {
             public void onClick(View v) {
                 if(Location.done){
                     Log.d("ds" , "dfsf");
+
                     location.setPoints();
+
                     //setContentView(R.layout.activity_main);
-                    Intent n = new Intent(Start.this , Start.class) ;
-                    startActivity(n);
+//                    Intent intent = new Intent() ;
+//                    intent.putExtra("message" , "next") ;
+//                    setResult(2 ,intent);
+//                    finish();
+
+                    Intent intent = new Intent(Start.this , item_details.class) ;
+                    intent.putExtra("current_point" , location.getCurrent_point() ) ;
+                    startActivityForResult(intent ,2);
                     //d.redraw();
                 }
             }
         });
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent() ;
+        intent.putExtra("message" , "back") ;
+        setResult(2 ,intent);
+        finish();
     }
 }
