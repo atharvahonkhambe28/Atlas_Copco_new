@@ -50,12 +50,15 @@ public class CardListActivity extends Activity {
         listView.addHeaderView(new View(this));
         listView.addFooterView(new View(this));
         Log.d("dejkdasjf" , "start");
+
         cardArrayAdapter = new CardArrayAdapter(getApplicationContext(), R.layout.list_item_card);
 
         for (Item item : items) {
             Card card = new Card( "ItemNumber : " + item.getItemNo(), "Description : " + item.getItemDescription(), "Location : " + item.getLocation() , "Quantity : " + item.getQuantity());
             cardArrayAdapter.add(card);
         }
+
+
         listView.setAdapter(cardArrayAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

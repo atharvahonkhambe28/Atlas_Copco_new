@@ -65,6 +65,7 @@ public class Scan extends Activity {
                     "Loading. Please wait...", true);
             FetchItemList.getInstance(null).fetch_item_list(dialog , Scan.this ,intentResult.getContents());
 
+
         }else {
             Toast.makeText(this, "Scan Again", Toast.LENGTH_SHORT).show();
         }
