@@ -20,7 +20,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Atlas_Project"
         android:usesCleartextTraffic="true">
+        <activity android:name=".layoutformation">
+            <!--intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter-->
+        </activity>
         <activity android:name=".Splash_Screen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,7 +34,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".Scan" />
         <activity android:name=".Start" />
         <activity android:name=".item_details" />
