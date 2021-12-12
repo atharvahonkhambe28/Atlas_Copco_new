@@ -84,8 +84,8 @@ public class DrawLayoutBitmap extends View  {
         customBitmap = new DrawLayout() ;
         customBitmap.setDestination(Location.getSudo_destination());
         customBitmap.setSource(Location.getSudo_source());
-        customBitmap.setNo_of_segments(5);
-        customBitmap.setNumber_of_racks(11);
+        customBitmap.setNo_of_segments(5); // ##############
+        customBitmap.setNumber_of_racks(11);// ##############
         customBitmap.setBitmap();
         bitmap = customBitmap.getBitmap() ;
         d =this ;
@@ -120,19 +120,7 @@ public class DrawLayoutBitmap extends View  {
 
         canvas.save();
         canvas.scale(mScaleFactor, mScaleFactor );
-//        if( (diffx * -1) < 0 ){
-//            diffx = 0;
-//        }
-//
-//        else if( (diffx * -1) > (2880 * mScaleFactor)- getWidth() ){
-//            diffx = ((2880 * mScaleFactor)- getWidth())*-1;
-//        }
-//        if( (diffy * -1) < 0 ){
-//            diffy = 0;
-//        }
-//        else if( (diffy * -1) > (1400 * mScaleFactor)- getHeight() ){
-//            diffy = ((1400 * mScaleFactor)- getHeight())*-1;
-//        }
+
         canvas.translate(diffx / mScaleFactor , diffy / mScaleFactor);
         canvas.drawRect(100 ,100 ,200 ,200 ,paint);
         canvas.drawBitmap(bitmap , 0 , 0 , paint);

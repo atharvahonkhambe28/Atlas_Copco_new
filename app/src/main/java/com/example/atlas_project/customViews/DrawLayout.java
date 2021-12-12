@@ -69,7 +69,7 @@ public class DrawLayout {
             // paint.setColor(Color.BLUE);
 
 
-            setPoints();
+           setPoints();
             draw_path_in_row(  path_Start_Top- rack_height ,100 + rack_width/2, 0);
 
             draw_path_in_row(  path_Start_Top + (rack_height+5)*11 ,100 + rack_width/2, 70);
@@ -77,7 +77,7 @@ public class DrawLayout {
 
 
             for(int i=0 ;i<no_of_segments;i++){
-                draw_column_of_racks(rack_Start_Top , rack_Start_Left + i*width_of_one_segment , rack_height ,rack_width  , i*2);
+                draw_column_of_racks(rack_Start_Top , rack_Start_Left + i*width_of_one_segment , rack_height ,rack_width  , i*2 );
 
                 draw_path_in_column(path_Start_Left +i*width_of_one_segment, path_Start_Top , circle_radius , number_of_racks ,true  ,i*2);
 
@@ -148,9 +148,9 @@ public class DrawLayout {
             char A = 'A' ;
             int circle_number;
             String rack_name ;
-            for(int i=0;i<number_of_racks ;i++){
-                circle_number = segment_number/2 + (i+1)*no_of_segments +10 ;
-                rack_name = circle_number + "-" + segment_number ;
+            for(int i=1;i<number_of_racks ;i++){
+                circle_number = segment_number/2 + (i)*no_of_segments +10 ;
+                rack_name = circle_number + "-" + (segment_number + 2) ;
                 setRect(top + add , left , height , width) ;
 
                 if(rack_name.equals(destination))
@@ -171,13 +171,14 @@ public class DrawLayout {
 
         for(int i=0;i<no_of_rect;i++){
              int x = 70 + i ;
-             String rack_name = x + "-" + "x";
+             String rack_name = x + "-" + "1";
             setRect(top,left+add,height,width);
             if(rack_name.equals(source)){
                 rack_color.setColor(Color.RED);
             }
             else if (rack_name.equals(destination))
                 rack_color.setColor(Color.GREEN);
+
             else rack_color.setColor(Color.BLUE);
             canvas.drawRect(rect,rack_color);
 

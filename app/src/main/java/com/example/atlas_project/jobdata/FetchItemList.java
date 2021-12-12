@@ -60,6 +60,7 @@ public class FetchItemList {
     public void fetch_item_list(ProgressDialog dialog , Context context , String filename){
 
 
+            Log.d("filename---------------" , filename);
 
         Call<List<ItemList>> call = jobapi.getJob(filename);
         Location location =  Location.getInstance(null ,null) ;
@@ -74,7 +75,7 @@ public class FetchItemList {
                 ArrayList<String> locations = new ArrayList<>();
                 location.setCurrent_point(0);
 
-                location.setDestination( response.body().get(0).getItems().get(0).getLocation());
+                location.setDestination(response.body().get(0).getItems().get(0).getLocation());
                 location.setSource("53 AA");
 
                 //loading
@@ -95,6 +96,8 @@ public class FetchItemList {
          call.enqueue(new CustomCallback<>(dialog, itemListCallback ,context));
 
     }
+
+
 
     public ItemList getItemList() {
         return itemList;

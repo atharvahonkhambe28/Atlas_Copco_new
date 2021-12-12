@@ -1,5 +1,6 @@
 package com.example.atlas_project.retro;
 
+import com.example.atlas_project.configurator.Configuration;
 import com.example.atlas_project.jobdata.ItemList;
 
 
@@ -18,4 +19,7 @@ public interface Jobapi {
 
     @POST("items_picked")
     Call<String> setItems(@Body List<ItemList> itemLists) ;
+
+    @GET("layout")
+    Call<Configuration> getLayout();
 }

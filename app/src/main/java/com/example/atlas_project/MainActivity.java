@@ -22,6 +22,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.atlas_project.configurator.Configuration;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -72,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Configuration.fetch_config(MainActivity.this);
                 Intent n = new Intent(MainActivity.this , Scan.class) ;
                 startActivity(n);
                 if(!Patterns.EMAIL_ADDRESS.matcher(editTextTextEmail.getText().toString()).matches()){

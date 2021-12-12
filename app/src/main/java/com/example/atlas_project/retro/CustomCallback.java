@@ -3,6 +3,7 @@ package com.example.atlas_project.retro;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 
 import com.example.atlas_project.CardListActivity;
 import com.example.atlas_project.Scan;
@@ -26,7 +27,7 @@ public class CustomCallback<T> implements Callback<T> {
 
     @Override
     public void onResponse(Call<T> call, Response<T> response) {
-        if(response.body() == null) return;
+       // if(response.body() == null) return;
         mCallback.onResponse(call , response);
         this.dialog.dismiss();
         Intent n =new Intent(mContext, CardListActivity.class) ;
@@ -35,6 +36,6 @@ public class CustomCallback<T> implements Callback<T> {
     }
     @Override
     public void onFailure(Call<T> call, Throwable t) {
-
+        Log.d("FAILUTE------" , t.getMessage()) ;
     }
 }

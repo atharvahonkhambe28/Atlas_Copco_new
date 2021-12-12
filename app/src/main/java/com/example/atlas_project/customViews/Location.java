@@ -40,8 +40,8 @@ public class Location {
         this.destination =destination ;
         sudo_source = InitializeMap.get_sudo_rack_name(source) ;
         sudo_destination = InitializeMap.get_sudo_rack_name(destination.substring(0,5)) ;
-        type = InitializeMap.get_rack_name(sudo_destination).split("-")[1] ;
-        shelf = destination.substring(5,6);
+        type = "type1" ;
+        shelf = "2" ;
         done = false ;
     }
 
